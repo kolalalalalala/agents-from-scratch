@@ -23,7 +23,7 @@ llm_router = llm.with_structured_output(RouterSchema)
 
 # Initialize the LLM, enforcing tool use (of any available tools) for agent
 llm = init_chat_model("openai:gpt-4.1", temperature=0.0)
-llm_with_tools = llm.bind_tools(tools, tool_choice="any")
+llm_with_tools = llm.bind_tools(tools, tool_choice="any", parallel_tool_calls=False)
 
 # Nodes
 def llm_call(state: State):
